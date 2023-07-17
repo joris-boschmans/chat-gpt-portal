@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:4.2.24
+    container_name: mongodb
+    environment:
+      - "MONGO_INITDB_ROOT_USERNAME=gpt"
+      - "MONGO_INITDB_ROOT_PASSWORD=gpt"
+    ports:
+      - "10001:27017"
+    volumes:
+      - "/var/mongodb_gpt:/data/db"
+    networks:
+      - gpt
+
+networks:
+  gpt:
+    driver: bridge
