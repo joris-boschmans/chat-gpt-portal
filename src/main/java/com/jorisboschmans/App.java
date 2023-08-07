@@ -1,5 +1,6 @@
 package com.jorisboschmans;
 
+import com.jorisboschmans.services.GptService;
 import io.javalin.Javalin;
 
 import static io.javalin.apibuilder.ApiBuilder.post;
@@ -13,8 +14,7 @@ public class App {
 			
 			app.routes(() ->
 					path("/gpt", () ->
-							post("/3", ctx ->
-									ctx.result("GPT-3 endpoint reached!"))));
+							post("/3", ctx -> GptService.getInstance().gpt3(ctx))));
 			
 		
 	}
