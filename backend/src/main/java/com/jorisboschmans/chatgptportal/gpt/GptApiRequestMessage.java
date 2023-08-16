@@ -1,4 +1,4 @@
-package com.jorisboschmans.models.gpt;
+package com.jorisboschmans.chatgptportal.gpt;
 
 import java.util.Objects;
 

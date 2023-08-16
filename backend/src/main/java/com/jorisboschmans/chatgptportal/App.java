@@ -1,6 +1,6 @@
-package com.jorisboschmans;
+package com.jorisboschmans.chatgptportal;
 
-import com.jorisboschmans.services.GptService;
+import com.jorisboschmans.chatgptportal.services.GptService;
 import io.javalin.Javalin;
 
 import static io.javalin.apibuilder.ApiBuilder.post;
@@ -13,8 +13,11 @@ public class App {
 		Javalin app = Javalin.create().start(7000);
 			
 			app.routes(() ->
-					path("/gpt", () ->
-							post("/3", ctx -> GptService.getInstance().gpt3(ctx))));
+					path("/gpt", () -> {
+						post("/3", ctx -> GptService.getInstance().gpt3(ctx));
+						post("/4", ctx -> GptService.getInstance().gpt4(ctx));
+					})
+			);
 			
 		
 	}

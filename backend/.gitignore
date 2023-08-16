@@ -24,7 +24,10 @@ hs_err_pid*
 replay_pid*
 
 # IDE
-.idea
+../.idea
 
 # maven
 target
+
+# private files
+src/main/resources/default.properties

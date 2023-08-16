@@ -1,6 +1,6 @@
-package com.jorisboschmans.models.gpt;
+package com.jorisboschmans.chatgptportal.gpt;
 
-import com.jorisboschmans.enums.Model;
+import com.jorisboschmans.chatgptportal.enums.Model;
 
 import java.util.Arrays;
 import java.util.Objects;

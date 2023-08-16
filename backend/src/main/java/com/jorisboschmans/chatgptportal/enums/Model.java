@@ -1,8 +1,9 @@
-package com.jorisboschmans.enums;
+package com.jorisboschmans.chatgptportal.enums;
 
 public enum Model {
 	
-	GPT_3_5_TURBO("gpt-3.5-turbo");
+	GPT_3_5_TURBO("gpt-3.5-turbo"),
+	GPT_4("gpt-4");
 	
 	private final String value;
 	
