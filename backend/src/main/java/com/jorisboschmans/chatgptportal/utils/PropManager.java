@@ -1,6 +1,5 @@
 package com.jorisboschmans.chatgptportal.utils;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -21,6 +20,8 @@ public class PropManager {
 	static {
 		init();
 	}
+	
+	private PropManager() {}
 	
 	/**
 	 * Initializes the properties by loading them from a file.

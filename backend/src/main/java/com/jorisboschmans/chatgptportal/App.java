@@ -2,6 +2,7 @@ package com.jorisboschmans.chatgptportal;
 
 import com.jorisboschmans.chatgptportal.services.GptService;
 import io.javalin.Javalin;
+import io.javalin.plugin.bundled.CorsPluginConfig;
 
 import static io.javalin.apibuilder.ApiBuilder.post;
 import static io.javalin.apibuilder.ApiBuilder.path;
@@ -10,7 +11,8 @@ public class App {
 	
 	public static void main(String[] args) {
 		
-		Javalin app = Javalin.create().start(7000);
+		Javalin app = Javalin.create(config -> config.plugins.enableCors(cors -> cors.add(CorsPluginConfig::anyHost))).start(7000);
+		
 			
 			app.routes(() ->
 					path("/gpt", () -> {
