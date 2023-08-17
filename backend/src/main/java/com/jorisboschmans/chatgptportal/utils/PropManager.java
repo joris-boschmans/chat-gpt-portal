@@ -1,5 +1,8 @@
 package com.jorisboschmans.chatgptportal.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -16,6 +19,7 @@ import java.util.Properties;
  */
 public class PropManager {
     private static final Properties properties = new Properties();
+		private static final Logger logger = LoggerFactory.getLogger(PropManager.class);
 	
 	static {
 		init();
@@ -40,7 +44,7 @@ public class PropManager {
 
         // Load the properties
         try (InputStream input = PropManager.class.getClassLoader().getResourceAsStream(propertiesFilename)) {
-	        System.out.println("Reading " + propertiesFilename);
+	        logger.debug("Reading {}", propertiesFilename);
             properties.load(input);
         } catch (IOException ex) {
             throw new RuntimeException("Error loading properties file " + propertiesFilename, ex);

@@ -5,6 +5,8 @@ import com.jorisboschmans.chatgptportal.enums.Model;
 import com.jorisboschmans.chatgptportal.gpt.GptApiRequest;
 import com.jorisboschmans.chatgptportal.utils.PropManager;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +20,7 @@ public class ApiService {
 	
 	private static ApiService instance;
 	private final ObjectMapper objectMapper = new ObjectMapper();
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	private ApiService() {}
 	
@@ -40,7 +43,7 @@ public class ApiService {
 		
 		try (OutputStream os = connection.getOutputStream()) {
 			String postData = objectMapper.writeValueAsString(new GptApiRequest(model, content, name));
-			System.out.println(postData);
+			logger.debug(postData);
 			byte[] input = postData.getBytes(StandardCharsets.UTF_8);
 			os.write(input, 0, input.length);
 		}
@@ -57,9 +60,9 @@ public class ApiService {
 			}
 			in.close();
 			
-			System.out.println("Response: " + response);
+			logger.debug("Response: {}", response);
 		} else {
-			System.out.println("API request failed with status code: " + responseCode);
+			logger.error("API request failed with status code: {}", responseCode);
 		}
 		
 		connection.disconnect();
